@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<html>
+
+
+	<head>
+		<link rel="stylesheet" href="css/style.css">
+		
+		<style> body {padding: 0; margin: 0;} </style>
+	</head>
+	<body>
+	
+		<div class="center">
+			<h1>Cluedo</h1>
+			<select id="select" class="myList" style="display: none;"></select>
+			<button class="button_compute" id="register" onClick="button_register()" style="display: none;">></button>
+		</div>
+		<div class="center">
+			<select id="place" class="myList2" style="display: none;">
+				<option value="veranda">Véranda</option>
+				<option value="salon">Salon</option>
+				<option value="salleamanger">Salle à manger</option>
+				<option value="bibliotheque">Bibliothèque</option>
+				<option value="salledeballe">Salle de Bal</option>
+				<option value="bureau">Bureau</option>
+				<option value="hall">Hall</option>
+				<option value="cuisine">Cuisine</option>
+				<option value="salledebilard">Salle de Billard</option>
+			</select>
+			
+			<select id="weapon" class="myList2" style="display: none;">
+				<option value="revolver">Revolver</option>
+				<option value="corde">Corde</option>
+				<option value="clefanglaise">Clef anglaise</option>
+				<option value="matraque">Matraque</option>
+				<option value="poignard">Poignard</option>
+				<option value="chandelier">Chandelier</option>
+			</select>
+			
+			<select id="person" class="myList2" style="display: none;">
+				<option value="colonelmoutarde">Colonel Moutarde</option>
+				<option value="reverendolive">Reverend Olive</option>
+				<option value="professeurviolet">Professeur Violet</option>
+				<option value="madamepervenche">Madame Pervenche</option>
+				<option value="mademoisellerose">Mademoiselle Rose</option>
+				<option value="madameleblanc">Madame Leblanc</option>
+			</select>
+		</div>
+		
+		<div class="center">
+			<p id="info">Number of players :</p>
+			<input type="number" id="playerNumber" placeholder="How many players ?" value="4"></input>
+			<button class="button_compute" id="go" onClick="button_compute()">></button>
+		</div>
+		
+		
+		<div class="center" id="name_holder">
+
+		</div>
+		
+		
+		<div class="center" id="name_holder">
+			<button class="button_compute" id="enter_player" onClick="enter_player()" style="display:none;">></button>
+		</div>
+		
+		
+	</body>
+	<script src="js/script.js"></script>
+</html>

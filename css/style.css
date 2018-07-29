@@ -1,0 +1,103 @@
+table, th, td {
+    border: 1px solid black;
+}
+
+
+
+input[type=number], select {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 16px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border:solid 2px red;    
+}
+
+input[type=text], select {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 16px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border:solid 2px red;    
+}
+
+.myList{
+  width: 60%;
+  padding: 12px 20px;
+  margin: 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border:solid 2px red;    
+}
+
+.myList2{
+  width: 30%;
+  padding: 12px 20px;
+  margin: 16px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border:solid 2px red;    
+}
+
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 40%;
+  height: 40 px;
+}
+
+.button_compute {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 15%;
+  height: 40px;
+}
+
+.button_link {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 40%;
+}
+
+.canvas{
+  margin-top: 45px;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}

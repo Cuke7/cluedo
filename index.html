@@ -5,64 +5,189 @@
 
 	<head>
 		<link rel="stylesheet" href="css/style.css">
-		
-		<style> body {padding: 0; margin: 0;} </style>
+	
 	</head>
-	<body>
+	<body style="padding-top: 20px;">
 	
 		<div class="center">
-			<h1>Cluedo</h1>
-			<select id="select" class="myList" style="display: none;"></select>
-			<button class="button_compute" id="register" onClick="button_register()" style="display: none;">></button>
+			<h1 id="cluedo">Cluedo</h1>
+			<select id="select" class="myList" style="display: none;" onchange="player_selected()"></select>
 		</div>
+		
+		<div class="center">
+			<h4 id="demande" style="display: none;">demande</h4>
+		</div>
+		
 		<div class="center">
 			<select id="place" class="myList2" style="display: none;">
-				<option value="veranda">Véranda</option>
-				<option value="salon">Salon</option>
-				<option value="salleamanger">Salle à manger</option>
-				<option value="bibliotheque">Bibliothèque</option>
-				<option value="salledeballe">Salle de Bal</option>
-				<option value="bureau">Bureau</option>
-				<option value="hall">Hall</option>
-				<option value="cuisine">Cuisine</option>
-				<option value="salledebilard">Salle de Billard</option>
+				<option value="Véranda">Véranda</option>
+				<option value="Salon">Salon</option>
+				<option value="Salle à manger">Salle à manger</option>
+				<option value="Bibliothèque">Bibliothèque</option>
+				<option value="Salle de Bal">Salle de Bal</option>
+				<option value="Bureau">Bureau</option>
+				<option value="Hall">Hall</option>
+				<option value="Cuisine">Cuisine</option>
+				<option value="Salle de Billard">Salle de Billard</option>
 			</select>
 			
 			<select id="weapon" class="myList2" style="display: none;">
-				<option value="revolver">Revolver</option>
-				<option value="corde">Corde</option>
-				<option value="clefanglaise">Clef anglaise</option>
-				<option value="matraque">Matraque</option>
-				<option value="poignard">Poignard</option>
-				<option value="chandelier">Chandelier</option>
+				<option value="Revolver">Revolver</option>
+				<option value="Corde">Corde</option>
+				<option value="Clef anglaise">Clef anglaise</option>
+				<option value="Matraque">Matraque</option>
+				<option value="Poignard">Poignard</option>
+				<option value="Chandelier">Chandelier</option>
 			</select>
 			
 			<select id="person" class="myList2" style="display: none;">
-				<option value="colonelmoutarde">Colonel Moutarde</option>
-				<option value="reverendolive">Reverend Olive</option>
-				<option value="professeurviolet">Professeur Violet</option>
-				<option value="madamepervenche">Madame Pervenche</option>
-				<option value="mademoisellerose">Mademoiselle Rose</option>
-				<option value="madameleblanc">Madame Leblanc</option>
+				<option value="Colonel Moutarde">Colonel Moutarde</option>
+				<option value="Révérend Olive">Révérend Olive</option>
+				<option value="professeur Violet">Professeur Violet</option>
+				<option value="Madame Pervenche">Madame Pervenche</option>
+				<option value="Mademoiselle Rose">Mademoiselle Rose</option>
+				<option value="Madame Leblanc">Madame Leblanc</option>
 			</select>
+		</div>
+		<div class="center">
 		</div>
 		
 		<div class="center">
 			<p id="info">Number of players :</p>
-			<input type="number" id="playerNumber" placeholder="How many players ?" value="4"></input>
+			<input type="number" id="playerNumber" placeholder="How many players ?" value="5"></input>
 			<button class="button_compute" id="go" onClick="button_compute()">></button>
 		</div>
 		
 		
 		<div class="center" id="name_holder">
-
 		</div>
 		
+		
+		<div class="center" id="radio_holder" style="margin-top: 60px;">
+			
+		</div>
+		
+		<div class="center">
+			<button class="button_compute" id="register" onClick="button_register()" style="display: none;">></button>
+		</div>
 		
 		<div class="center" id="name_holder">
 			<button class="button_compute" id="enter_player" onClick="enter_player()" style="display:none;">></button>
 		</div>
 		
+		<div><table id="table" style="display: none;">
+		  <tr>
+			<td>---</td>
+		  </tr>		  
+		  <tr>
+			<td>Colonel Moutarde</td>
+		  </tr>
+		  <tr>
+			<td>Révérend Olive</td>
+		  </tr>
+		  <tr>
+			<td>Professeur Violet</td>
+		  </tr>
+		  <tr>
+			<td>Madame Pervenche</td>
+		  </tr>
+		  <tr>
+			<td>Mademoiselle Rose</td>
+		  </tr>
+		  <tr>
+			<td>Madame Leblanc</td>
+		  </tr>
+		  <tr>
+			<td><b>---</b></td>
+		  </tr>
+		  <tr>
+			<td><b>---</b></td>
+		  </tr>
+		  <tr>
+			<td>Revolver</td>
+		  </tr>
+		  <tr>
+			<td>Corde</td>
+		  </tr>
+		  <tr>
+			<td>Clef anglaise</td>
+		  </tr>
+		  <tr>
+			<td>Matraque</td>
+		  </tr>
+		  <tr>
+			<td>Poignard</td>
+		  </tr>
+		  <tr>
+			<td>Chandelier</td>
+		  </tr>
+		  <tr>
+			<td>---</td>
+		  </tr>
+		  <tr>
+			<td><b>---</b></td>
+		  </tr>
+		  <tr>
+			<td>Véranda</td>
+		  </tr>
+		  <tr>
+			<td>Salon</td>
+		  </tr>
+		  <tr>
+			<td>Salle à manger</td>
+		  </tr>
+		  <tr>
+			<td>Bibliothèque</td>
+		  </tr>
+		  <tr>
+			<td>Salle de bal</td>
+		  </tr>
+		  <tr>
+			<td>Bureau</td>
+		  </tr>
+		  <tr>
+			<td>Hall</td>
+		  </tr>
+		  <tr>
+			<td>Cuisine</td>
+		  </tr>
+		  <tr>
+			<td>Salle de Billard</td>
+		  </tr>
+		</table>
+		</div>
+		
+		<div class="center">
+			<select id="select2" class="myList2" style="display: none;"></select>
+			
+			<select id="all" class="myList2" style="display: none;">
+				<option value="Véranda">Véranda</option>
+				<option value="Salon">Salon</option>
+				<option value="Salle à manger">Salle à manger</option>
+				<option value="Bibliothèque">Bibliothèque</option>
+				<option value="Salle de Bal">Salle de Bal</option>
+				<option value="Bureau">Bureau</option>
+				<option value="Hall">Hall</option>
+				<option value="Cuisine">Cuisine</option>
+				<option value="Salle de Billard">Salle de Billard</option>
+				<option value="Revolver">Revolver</option>
+				<option value="Corde">Corde</option>
+				<option value="Clef anglaise">Clef anglaise</option>
+				<option value="Matraque">Matraque</option>
+				<option value="Poignard">Poignard</option>
+				<option value="Chandelier">Chandelier</option>
+				<option value="Colonel Moutarde">Colonel Moutarde</option>
+				<option value="Révérend Olive">Révérend Olive</option>
+				<option value="Professeur Violet">Professeur Violet</option>
+				<option value="Madame Pervenche">Madame Pervenche</option>
+				<option value="Mademoiselle Rose">Mademoiselle Rose</option>
+				<option value="Madame Leblanc">Madame Leblanc</option>
+			</select>
+				
+			<button class="button_yes" id="yes" onClick="button_yes()" style="display: none;">></button>
+			<button class="button_no" id="no" onClick="button_no()" style="display: none;">x</button>
+			<button class="button_maybe" id="maybe" onClick="button_maybe()" style="display: none;">?</button>
+		</div>
 		
 	</body>
 	<script src="js/script.js"></script>

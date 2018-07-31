@@ -2,6 +2,7 @@
 let pnumber; // Number of players
 let aplayer = []; // Array containing players names
 
+let data = [];
 
 // Create as many input field as the number of players
 function button_compute() {
@@ -69,6 +70,7 @@ function enter_player() {
 	for (let i = 0; i < pnumber; i++) {
 		let label = document.createElement("LABEL");
 		label.setAttribute("class", "container");
+		label.setAttribute("ID", "label " + aplayer[i]);
 		let input = document.createElement("INPUT");
 		input.setAttribute("type", "radio");
 		input.setAttribute("ID", aplayer[i]);
@@ -83,8 +85,13 @@ function enter_player() {
 		document.getElementById("radio_holder").appendChild(label);
 	}
 
+	document.getElementById("span " + aplayer[0]).style.display = "none";
+	document.getElementById("label " + aplayer[0]).style.display = "none";
+	document.getElementById(aplayer[0]).disabled = true;
+
 	let label = document.createElement("LABEL");
 	label.setAttribute("class", "container");
+	label.setAttribute("ID", "label nobody");
 	let input = document.createElement("INPUT");
 	input.setAttribute("type", "radio");
 	input.setAttribute("ID", "nobody");
@@ -103,9 +110,19 @@ function enter_player() {
 
 	for (let i = 0; i < pnumber; i++) {
 		for (let j = 0; j < table.rows.length; j++) {
-			table.rows[j].insertCell();
+			let cell = table.rows[j].insertCell();
+			if (j != 0) {
+				cell.addEventListener("click", clicked);
+			}
 		}
 		table.rows[0].cells[i + 1].innerHTML = aplayer[i];
+	}
+
+	for (i = 0; i < pnumber; i++) {
+		data.push([])
+		for (j = 0; j < table.rows.length; j++) {
+			data[i].push(0);
+		}
 	}
 }
 
@@ -113,12 +130,14 @@ function player_selected() {
 	let asker = document.getElementById("select").value;
 	for (let i = 0; i < aplayer.length; i++) {
 		document.getElementById("span " + aplayer[i]).style.display = "inline";
+		document.getElementById("label " + aplayer[i]).style.display = "inline-block";
 		document.getElementById(aplayer[i]).disabled = false;
 	}
 	document.getElementById("span " + "nobody").style.display = "inline";
 	document.getElementById("nobody").disabled = false;
 
 	document.getElementById("span " + asker).style.display = "none";
+	document.getElementById("label " + asker).style.display = "none";
 	document.getElementById(asker).disabled = true;
 }
 
@@ -154,50 +173,84 @@ function button_register() {
 	}
 }
 
-	function write_table(player, object, statut) {
-		let table = document.getElementById("table");
-		let x;
-		let y;
-		for (let i = 0; i < table.rows.length; i++) {
-			if (table.rows[i].cells[0].innerHTML == object) {
-				y = i;
-			}
+function write_table(player, object, statut) {
+	let table = document.getElementById("table");
+	let x;
+	let y;
+	for (let i = 0; i < table.rows.length; i++) {
+		if (table.rows[i].cells[0].innerHTML == object) {
+			y = i;
 		}
+	}
 
-		for (let j = 0; j < table.rows[0].cells.length; j++) {
+	for (let j = 0; j < table.rows[0].cells.length; j++) {
 
-			if (table.rows[0].cells[j].innerHTML == player) {
-				x = j;
-			}
+		if (table.rows[0].cells[j].innerHTML == player) {
+			x = j;
 		}
+	}
 
-		if (statut == "yes") {
-			table.rows[y].cells[x].innerHTML = "<img src=\"yes.png\" height=\"20\" width=\"20\">";
-		}
+	if (statut == "yes") {
+		table.rows[y].cells[x].innerHTML = "<img src=\"yes.png\" height=\"20\" width=\"20\">";
+		data[x - 1][y - 1] = 1;
+	}
 
-		if (statut == "no") {
-			table.rows[y].cells[x].innerHTML = "<img src=\"no.png\" height=\"20\" width=\"20\">";
-		}
+	if (statut == "no") {
+		table.rows[y].cells[x].innerHTML = "<img src=\"no.png\" height=\"20\" width=\"20\">";
+		data[x - 1][y - 1] = 2;
+	}
 
-		if (statut == "maybe") {
+	if (statut == "maybe") {
+		if (data[x - 1][y - 1] == 0) {
 			table.rows[y].cells[x].innerHTML = "<img src=\"maybe.png\" height=\"20\" width=\"20\">";
+			data[x - 1][y - 1] = 3;
 		}
 	}
+}
 
-	function button_yes() {
-		let player = document.getElementById("select2").value;
-		let object = document.getElementById("all").value;
-		write_table(player, object, "yes");
-	}
+function button_yes() {
+	let player = document.getElementById("select2").value;
+	let object = document.getElementById("all").value;
+	write_table(player, object, "yes");
+}
 
-	function button_no() {
-		let player = document.getElementById("select2").value;
-		let object = document.getElementById("all").value;
-		write_table(player, object, "no");
-	}
+function button_no() {
+	let player = document.getElementById("select2").value;
+	let object = document.getElementById("all").value;
+	write_table(player, object, "no");
+}
 
-	function button_maybe() {
-		let player = document.getElementById("select2").value;
-		let object = document.getElementById("all").value;
-		write_table(player, object, "maybe");
+function button_maybe() {
+	let player = document.getElementById("select2").value;
+	let object = document.getElementById("all").value;
+	write_table(player, object, "maybe");
+}
+
+function clicked() {
+	let x = this.cellIndex - 1;
+	let y = this.parentNode.rowIndex - 1;
+	//console.log(x + ":" + y);
+	let table = document.getElementById("table");
+
+	switch (data[x][y]) {
+	case 0:
+		data[x][y] = 1;
+		table.rows[y + 1].cells[x + 1].innerHTML = "<img src=\"yes.png\" height=\"20\" width=\"20\">";
+		break;
+
+	case 1:
+		data[x][y] = 2;
+		table.rows[y + 1].cells[x + 1].innerHTML = "<img src=\"no.png\" height=\"20\" width=\"20\">";
+		break;
+
+	case 2:
+		data[x][y] = 3;
+		table.rows[y + 1].cells[x + 1].innerHTML = "<img src=\"maybe.png\" height=\"20\" width=\"20\">";
+		break;
+
+	case 3:
+	data[x][y] = 1;
+		table.rows[y + 1].cells[x + 1].innerHTML = "<img src=\"yes.png\" height=\"20\" width=\"20\">";
+
 	}
+}

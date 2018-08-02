@@ -1,6 +1,7 @@
 // ------------------------
 let pnumber; // Number of players
 let aplayer = []; // Array containing players names
+let init = ["Louis", "Martin", "Jean", "Clotilde", "Marie"];
 
 let data = [];
 
@@ -16,7 +17,8 @@ function create_inputs(number) {
 		x.setAttribute("type", "text");
 		x.setAttribute("ID", i);
 		//By default the name is player_i
-		x.value = "player " + i;
+		//x.value = "player " + i;
+		x.value=init[i];
 		// Insert them is the div "name_holder"
 		document.getElementById("name_holder").appendChild(x);
 
@@ -46,13 +48,13 @@ function enter_player() {
 		aplayer.push(document.getElementById(i).value);
 	}
 
-	let select2 = document.getElementById("select2");
+	/*let select2 = document.getElementById("select2");
 	for (let i = 0; i < pnumber; i++) {
 		let option = document.createElement('option');
 		option.text = document.getElementById(i).value;
 		select2.appendChild(option);
 		aplayer.push(document.getElementById(i).value);
-	}
+	}*/
 
 	document.getElementById("select").style.display = "inline";
 	document.getElementById("place").style.display = "inline";
@@ -61,11 +63,11 @@ function enter_player() {
 	document.getElementById("register").style.display = "inline";
 	document.getElementById("demande").style.display = "inline-block";
 	document.getElementById("table").style.display = "inline-block";
-	document.getElementById("select2").style.display = "inline";
+	/*document.getElementById("select2").style.display = "inline";
 	document.getElementById("all").style.display = "inline";
 	document.getElementById("yes").style.display = "inline-block";
 	document.getElementById("no").style.display = "inline-block";
-	document.getElementById("maybe").style.display = "inline-block";
+	document.getElementById("maybe").style.display = "inline-block";*/
 
 	for (let i = 0; i < pnumber; i++) {
 		let label = document.createElement("LABEL");
@@ -249,8 +251,8 @@ function clicked() {
 		break;
 
 	case 3:
-	data[x][y] = 1;
-		table.rows[y + 1].cells[x + 1].innerHTML = "<img src=\"yes.png\" height=\"20\" width=\"20\">";
+	data[x][y] = 0;
+		table.rows[y + 1].cells[x + 1].innerHTML = "";
 
 	}
 }
